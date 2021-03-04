@@ -18,3 +18,5 @@
 <br>
 [Public Logo URL](https://trace-logo-image.s3.us-east-2.amazonaws.com/CS+407+Trace+Logo.png)
 <br>
+[CouchDB Fauxton](http://ec2-18-219-243-170.us-east-2.compute.amazonaws.com:5984/_utils/)
+<br>
