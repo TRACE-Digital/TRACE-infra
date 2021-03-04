@@ -16,3 +16,5 @@
 <br>
 [Cognito Authentication](https://tracedigital.auth.us-east-2.amazoncognito.com/login?client_id=on5mc08j8f3gi9sg32jcvp6n7&response_type=token&scope=email+phone+aws.cognito.signin.user.admin+profile+openid&redirect_uri=https%3A%2F%2Fd3w57edmav1w8m.cloudfront.net%2F)
 <br>
+[Public Logo URL](https://trace-logo-image.s3.us-east-2.amazonaws.com/CS+407+Trace+Logo.png)
+<br>
