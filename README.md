@@ -10,7 +10,9 @@
 <br>
 [CouchDB API](https://7fuc7hst55.execute-api.us-east-2.amazonaws.com/)
 <br>
-[CouchDB EC2 Instance](http://ec2-18-219-243-170.us-east-2.compute.amazonaws.com:5984/)
+[CouchDB EC2 Instance Without SSL](http://ec2-18-219-243-170.us-east-2.compute.amazonaws.com:5984/)
+<br>
+[CouchDB EC2 Instance With SSL](https://couchdb.tracedigital.tk:6984/)
 <br>
 [CloudWatch Dashboard](https://cloudwatch.amazonaws.com/dashboard.html?dashboard=trace-cloudwatch-dashboard&context=eyJSIjoidXMtZWFzdC0xIiwiRCI6ImN3LWRiLTAzOTQ0MDY2MzE0NiIsIlUiOiJ1cy1lYXN0LTFfS3F5MVF2cDA3IiwiQyI6IjNldG1iaXUwbTNwZWg5bHRnbTRzZWwwNzciLCJJIjoidXMtZWFzdC0xOmM2NDdkNTViLTFkMzUtNDc4ZC05NDY5LTU4N2U3MTA4MDI5ZSIsIk8iOiJhcm46YXdzOmlhbTo6MDM5NDQwNjYzMTQ2OnJvbGUvc2VydmljZS1yb2xlL0Nsb3VkV2F0Y2hEYXNoYm9hcmQtUHVibGljLVJlYWRPbmx5QWNjZXNzLXRyYWNlLWNsb3Vkd2EtREU4T1A4MUYiLCJNIjoiUHVibGljIn0%3D)
 <br>
@@ -18,5 +20,7 @@
 <br>
 [Public Logo URL](https://trace-logo-image.s3.us-east-2.amazonaws.com/CS+407+Trace+Logo.png)
 <br>
-[CouchDB Fauxton](http://ec2-18-219-243-170.us-east-2.compute.amazonaws.com:5984/_utils/)
+[CouchDB Fauxton Without SSL](http://ec2-18-219-243-170.us-east-2.compute.amazonaws.com:5984/_utils/)
+<br>
+[CouchDB Fauxton With SSL](https://couchdb.tracedigital.tk:6984/_utils/)
 <br>
