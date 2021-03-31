@@ -70,7 +70,7 @@
   
   Body: None
   
-  * ### Deleting/Disabling Password Pages:
+* ### Deleting/Disabling Password Pages:
 
   Description: Calling this API deletes the password page for the given user.
   
