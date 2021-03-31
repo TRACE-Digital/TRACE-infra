@@ -2,13 +2,14 @@
 ### Repository for infrastructure components
 
 ## Important Links:
+#### AWS:
 [AWS Console](console.aws.amazon.com)
 <br>
 [CloudFront Distribution](d3w57edmav1w8m.cloudfront.net)
 <br>
 [Public S3 Bucket](http://trace-prod-ohio.s3-website.us-east-2.amazonaws.com)
 <br>
-[CouchDB API](https://7fuc7hst55.execute-api.us-east-2.amazonaws.com/)
+[CouchDB API](https://7fuc7hst55.execute-api.us-east-2.amazonaws.com/prod/)
 <br>
 [CouchDB EC2 Instance Without SSL](http://ec2-18-219-243-170.us-east-2.compute.amazonaws.com:5984/)
 <br>
@@ -18,9 +19,11 @@
 <br>
 [Cognito Authentication](https://tracedigital.auth.us-east-2.amazoncognito.com/login?client_id=on5mc08j8f3gi9sg32jcvp6n7&response_type=token&scope=email+phone+aws.cognito.signin.user.admin+profile+openid&redirect_uri=https%3A%2F%2Fd3w57edmav1w8m.cloudfront.net%2F)
 <br>
-[Public Logo URL](https://trace-logo-image.s3.us-east-2.amazonaws.com/CS+407+Trace+Logo.png)
-<br>
+#### CouchDB:
 [CouchDB Fauxton Without SSL](http://ec2-18-219-243-170.us-east-2.compute.amazonaws.com:5984/_utils/)
 <br>
 [CouchDB Fauxton With SSL](https://couchdb.tracedigital.tk:6984/_utils/)
+<br>
+#### Other:
+[Public Logo URL](https://trace-logo-image.s3.us-east-2.amazonaws.com/CS+407+Trace+Logo.png)
 <br>
