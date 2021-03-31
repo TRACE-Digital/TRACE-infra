@@ -69,5 +69,17 @@
   Required Headers: None
   
   Body: None
+  
+  * ### Deleting/Disabling Password Pages:
+
+  Description: Calling this API deletes the password page for the given user.
+  
+  API Address: https://76gjqug5j8.execute-api.us-east-2.amazonaws.com/prod/deletepassword?username={username}
+  
+  Query Parameters: {username}: The username of the user whom the desired public page belongs to
+  
+  Required Headers: None
+  
+  Body: None
 
 ## Creating a Custom URL:
