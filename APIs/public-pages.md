@@ -98,6 +98,19 @@
   
   Body: None
   
+* ### Navigating to a Custom URL:
+
+  Description: This API acts as a web server which returns the corresponding user's public page.
+  
+  API Address: https://76gjqug5j8.execute-api.us-east-2.amazonaws.com/prod/u/{customurl}
+  
+  Path Parameters:
+  * {customurl}: The suffix the user would like to navigate to
+  
+  Required Headers: None
+  
+  Body: None
+  
 * ### Deleting a Custom URL:
 
   Description: Calling this API deletes the custom URL which redirects to the user's primary URL, if they have one.
