@@ -110,15 +110,4 @@
   Required Headers: None
   
   Body: None
-  
-* ### Deleting a Custom URL:
-
-  Description: Calling this API deletes the custom URL which redirects to the user's primary URL, if they have one.
-  
-  API Address: https://76gjqug5j8.execute-api.us-east-2.amazonaws.com/prod/custom/delete?username={username}
-  
-  Query Parameters: {username}: The username of the user whom the desired public page belongs to
-  
-  Required Headers: None
-  
-  Body: None
+ 
