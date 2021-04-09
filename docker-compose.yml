@@ -1,0 +1,56 @@
+version: "3.7"
+
+services:
+  matomo:
+    image: matomo:4
+    container_name: matomo
+    restart: unless-stopped
+    env_file: ./secrets/MATOMO_SECRET_ENV
+    depends_on:
+      - mysql
+    environment:
+      - MATOMO_DATABASE_HOST=mysql
+      - MATOMO_DATABASE_DBNAME=matomo
+      - MATOMO_DATABASE_USERNAME=matomo
+      - TZ=America/Indiana/Indianapolis
+    networks:
+      - analytics
+    ports:
+      - 8080:80/tcp
+    volumes:
+      - matomo:/var/www/html
+
+  mysql:
+    image: trace/mysql
+    build:
+      context: mysql
+    container_name: mysql
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/MYSQL_ROOT_PASSWORD
+      - TZ=America/Indiana/Indianapolis
+    secrets:
+      - MYSQL_ROOT_PASSWORD
+      - MATOMO_SECRET_ENV
+    networks:
+      - analytics
+    # ports:
+    #   - 3306:3306/tcp
+    volumes:
+      - mysql:/var/lib/mysql
+
+secrets:
+  MATOMO_SECRET_ENV:
+    file: ./secrets/MATOMO_SECRET_ENV
+  MYSQL_ROOT_PASSWORD:
+    file: ./secrets/MYSQL_ROOT_PASSWORD
+
+networks:
+  public:
+    driver: bridge
+  analytics:
+    driver: bridge
+
+volumes:
+  matomo:
+  mysql:
