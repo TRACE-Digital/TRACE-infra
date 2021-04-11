@@ -15,7 +15,6 @@ sudo certbot certonly --standalone -n \
     -d "matomo.${TRACE}" \
     -d "analytics.${TRACE}" \
     -d "data.${TRACE}" \
-    --dry-run \
     --expand
 
 # Keep this inside the repository
@@ -25,8 +24,8 @@ ln -s /etc/letsencrypt/live/${CERT_NAME} ./haproxy/certs
 
 # Update certbot's HTTP port since HAProxy should now occupy 80
 # and will proxy requests for .well-known/acme-challenge here
-sed -ri.bak "s/http01_port.*/http01_port = ${CERTBOT_PORT}" "/etc/letsencrypt/renewal/${CERT_NAME}.conf"
-sed -ri "s/certbot ([^:]*):[0-9]*/certbot \1:${CERTBOT_PORT}" "./haproxy/haproxy.cfg"
+sudo sed -ri.bak "s/http01_port.*/http01_port = ${CERTBOT_PORT}/" "/etc/letsencrypt/renewal/${CERT_NAME}.conf"
+sed -ri "s/certbot ([^:]*):[0-9]*/certbot \1:${CERTBOT_PORT}/" "./haproxy/haproxy.cfg"
 
 # Every day at 2:30 AM
 CRON_JOB="30 2 * * * /usr/bin/certbot renew --renew-hook '${PWD}/scripts/certbot-renew-hook.sh' >> /var/log/cert-renewal.log"
