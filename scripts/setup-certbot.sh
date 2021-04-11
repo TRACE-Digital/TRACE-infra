@@ -20,7 +20,7 @@ sudo certbot certonly --standalone -n \
 # Keep this inside the repository
 # Helps on a dev machine and especially on Windows since we can also
 # make 'certs' a normal folder with self-signed certs if we want
-ln -s /etc/letsencrypt/live/${CERT_NAME} ./haproxy/certs
+sudo ln -sf /etc/letsencrypt/live/${CERT_NAME} ./haproxy/certs
 
 # Update certbot's HTTP port since HAProxy should now occupy 80
 # and will proxy requests for .well-known/acme-challenge here
