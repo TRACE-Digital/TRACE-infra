@@ -1,2 +1,3 @@
-.vscode/
-secrets/
+.vscode
+secrets
+haproxy/certs

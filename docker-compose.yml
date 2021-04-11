@@ -39,6 +39,22 @@ services:
     volumes:
       - mysql:/var/lib/mysql
 
+  proxy:
+    image: trace/haproxy
+    build:
+      context: ./haproxy
+    container_name: proxy
+    environment:
+      - TZ=America/Indiana/Indianapolis
+    networks:
+      - public
+      - analytics
+    ports:
+      - 80:80/tcp
+      - 443:443/tcp
+    volumes:
+      - ./haproxy/certs:/certs:ro
+
 secrets:
   MATOMO_SECRET_ENV:
     file: ./secrets/MATOMO_SECRET_ENV
@@ -54,3 +70,4 @@ networks:
 volumes:
   matomo:
   mysql:
+  certs:
