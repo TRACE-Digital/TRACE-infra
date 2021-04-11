@@ -17,10 +17,12 @@ sudo certbot certonly --standalone -n \
     -d "data.${TRACE}" \
     --expand
 
+echo
+
 # Keep this inside the repository
 # Helps on a dev machine and especially on Windows since we can also
 # make 'certs' a normal folder with self-signed certs if we want
-sudo ln -sf /etc/letsencrypt/live/${CERT_NAME} ./haproxy/certs
+sudo ln -vsf /etc/letsencrypt/live/${CERT_NAME} ./haproxy/certs
 
 # Update certbot's HTTP port since HAProxy should now occupy 80
 # and will proxy requests for .well-known/acme-challenge here
@@ -34,6 +36,9 @@ CRON_JOB="30 2 * * * /usr/bin/certbot renew --renew-hook '${PWD}/scripts/certbot
 # Filter out our job if already present,
 # Add our job
 (
-    sudo crontab -l 2> /dev/null | grep --invert-match "${CRON_JOB}";
+    sudo crontab -l 2> /dev/null | grep --invert-match "certbot-renew-hook";
     echo "${CRON_JOB}"
 ) | sudo crontab -
+
+echo "Renewal cron job added"
+sudo crontab -l
