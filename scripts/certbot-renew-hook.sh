@@ -13,7 +13,7 @@ cd "/etc/letsencrypt/live/${CERT_NAME}"
 
 # Create a combined PEM file for HAProxy
 cat "fullchain.pem" "privkey.pem" > "combined.pem"
-chmod 400 "combined.pem"
+chmod 600 "combined.pem"
 
 # https://www.haproxy.com/documentation/hapee/2-3r1/management/starting-stopping/#reload-the-configuration
 docker exec proxy bash -c 'kill -SIGUSR2 $(cat /run/haproxy.pid)'
@@ -36,3 +36,5 @@ docker exec proxy bash -c 'kill -SIGUSR2 $(cat /run/haproxy.pid)'
 # # docker exec proxy bash -c "echo 'show ssl cert' | ${API}"
 # # docker exec proxy bash -c "echo 'show ssl cert */etc/haproxy/certs/site.pem' | ${API}"
 # docker exec proxy bash -c "echo 'commit ssl cert /etc/haproxy/certs/site.pem' | ${API}"
+
+cd -

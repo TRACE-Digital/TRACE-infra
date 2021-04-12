@@ -8,6 +8,7 @@ CERTBOT_PORT=8080
 # Start the certbot webserver on port 80 and request a cert
 sudo certbot certonly --standalone -n \
     --preferred-challenges http \
+    --http-01-port 80 \
     --cert-name "${CERT_NAME}" \
     -d "ec2.${TRACE}" \
     -d "db.${TRACE}" \
@@ -28,6 +29,10 @@ sudo ln -vsf /etc/letsencrypt/live/${CERT_NAME} ./haproxy/certs
 # and will proxy requests for .well-known/acme-challenge here
 sudo sed -ri.bak "s/http01_port.*/http01_port = ${CERTBOT_PORT}/" "/etc/letsencrypt/renewal/${CERT_NAME}.conf"
 sed -ri "s/certbot ([^:]*):[0-9]*/certbot \1:${CERTBOT_PORT}/" "./haproxy/haproxy.cfg"
+
+# Create a combined PEM file for HAProxy
+sudo cat "./haproxy/certs/fullchain.pem" "./haproxy/certs/privkey.pem" > "./haproxy/certs/combined.pem"
+sudo chmod 600 "./haproxy/certs/combined.pem"
 
 # Every day at 2:30 AM
 CRON_JOB="30 2 * * * /usr/bin/certbot renew --renew-hook '${PWD}/scripts/certbot-renew-hook.sh' >> /var/log/cert-renewal.log"
