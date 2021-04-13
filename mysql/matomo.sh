@@ -44,15 +44,22 @@ create-database() {
         exit 1
     fi
 
+    user="${MYSQL_USER:-root}"
+    host="${MYSQL_HOST:-127.0.0.1}"
+    port="${MYSQL_TCP_PORT:-3306}"
+
+    echo "Connecting to MySQL ${user}@${host}:${port}..."
+    echo
+
     # TODO: Restrict privledges
     # TODO: Allow restricting allowed hosts
-    mysql --user="root" --password="${MYSQL_ROOT_PASSWORD}" <<-EOSQL
+    mysql -h "${host}" -p "${port}" --user="${user}" --password="${MYSQL_ROOT_PASSWORD}" <<-EOSQL
         CREATE DATABASE ${lower};
         CREATE USER '${lower}'@'%' IDENTIFIED BY '${DB_PASSWORD}';
         GRANT ALL PRIVILEGES ON ${lower}.* TO '${lower}'@'%';
 EOSQL
 
-    echo ""
+    echo
     echo "done"
 }
 
