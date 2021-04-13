@@ -20,8 +20,8 @@ Repository for infrastructure components
 - [CouchDB Fauxton With SSL](https://couchdb.tracedigital.tk:6984/_utils/)
 
 ### Analytics ###
-- [Matomo](https://matomo.tracedigital.tk)
-- [MySQL Instance](analytics-1.cryruszpxgql.us-east-2.rds.amazonaws.com) (only accessible from `prod` VPC)
+- [Matomo](https://analytics.tracedigital.tk/)
+- [MySQL Instance](mysql://analytics-1.cryruszpxgql.us-east-2.rds.amazonaws.com:3306) (only accessible from `prod` VPC)
 
 ### Other ###
 - [Public Logo URL](https://trace-logo-image.s3.us-east-2.amazonaws.com/CS+407+Trace+Logo.png)
