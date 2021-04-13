@@ -7,10 +7,10 @@ services:
     restart: unless-stopped
     env_file: ./secrets/MATOMO_SECRET_ENV
     depends_on:
-      - mysql
+      # - mysql
       - proxy
     environment:
-      - MATOMO_DATABASE_HOST=mysql
+      - MATOMO_DATABASE_HOST=analytics-1.cryruszpxgql.us-east-2.rds.amazonaws.com
       - MATOMO_DATABASE_DBNAME=matomo
       - MATOMO_DATABASE_USERNAME=matomo
       - TZ=America/Indiana/Indianapolis
@@ -21,27 +21,6 @@ services:
     #   - 8080:80/tcp
     volumes:
       - matomo:/var/www/html
-
-  mysql:
-    image: trace/mysql
-    build:
-      context: mysql
-    container_name: mysql
-    restart: unless-stopped
-    environment:
-      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/MYSQL_ROOT_PASSWORD
-      - TZ=America/Indiana/Indianapolis
-    secrets:
-      - MYSQL_ROOT_PASSWORD
-      - MATOMO_SECRET_ENV
-    networks:
-      - analytics
-    # Accessed via the docker network
-    # Doesn't need to be exposed on the host
-    # ports:
-    #   - 3306:3306/tcp
-    volumes:
-      - mysql:/var/lib/mysql
 
   proxy:
     image: trace/haproxy
@@ -60,11 +39,32 @@ services:
     volumes:
       - ./haproxy/certs:/certs:ro
 
+  # mysql:
+  #   image: trace/mysql
+  #   build:
+  #     context: mysql
+  #   container_name: mysql
+  #   restart: unless-stopped
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/MYSQL_ROOT_PASSWORD
+  #     - TZ=America/Indiana/Indianapolis
+  #   secrets:
+  #     - MYSQL_ROOT_PASSWORD
+  #     - MATOMO_SECRET_ENV
+  #   networks:
+  #     - analytics
+  #   # Accessed via the docker network
+  #   # Doesn't need to be exposed on the host
+  #   # ports:
+  #   #   - 3306:3306/tcp
+  #   volumes:
+  #     - mysql:/var/lib/mysql
+
 secrets:
   MATOMO_SECRET_ENV:
     file: ./secrets/MATOMO_SECRET_ENV
-  MYSQL_ROOT_PASSWORD:
-    file: ./secrets/MYSQL_ROOT_PASSWORD
+  # MYSQL_ROOT_PASSWORD:
+  #   file: ./secrets/MYSQL_ROOT_PASSWORD
 
 networks:
   public:

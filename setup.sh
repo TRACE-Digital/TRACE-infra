@@ -7,6 +7,8 @@ sudo apt update
 sudo apt upgrade -y
 sudo apt install -y git certbot docker.io docker-compose
 
+usermod -aG docker "${USER}"
+
 if [ ! -d "${PROJECT_DIR}" ]; then
     git clone https://github.com/TRACE-Digital/TRACE-infra "${PROJECT_DIR}"
 fi
