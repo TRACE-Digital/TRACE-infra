@@ -1,4 +1,4 @@
-version: "3.7"
+version: '3.7'
 
 services:
   matomo:
@@ -36,7 +36,8 @@ services:
       - MATOMO_SECRET_ENV
     networks:
       - analytics
-    # Expose via the reverse proxy
+    # Accessed via the docker network
+    # Doesn't need to be exposed on the host
     # ports:
     #   - 3306:3306/tcp
     volumes:
