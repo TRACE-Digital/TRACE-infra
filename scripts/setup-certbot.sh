@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eo pipefail
+set -e
 
 TRACE="tracedigital.tk"
 CERT_NAME="ec2"
@@ -30,9 +30,8 @@ sudo ln -vsf /etc/letsencrypt/live/${CERT_NAME} ./haproxy/certs
 sudo sed -ri.bak "s/http01_port.*/http01_port = ${CERTBOT_PORT}/" "/etc/letsencrypt/renewal/${CERT_NAME}.conf"
 sed -ri "s/certbot ([^:]*):[0-9]*/certbot \1:${CERTBOT_PORT}/" "./haproxy/haproxy.cfg"
 
-# Create a combined PEM file for HAProxy
-sudo cat "./haproxy/certs/fullchain.pem" "./haproxy/certs/privkey.pem" > "./haproxy/certs/combined.pem"
-sudo chmod 600 "./haproxy/certs/combined.pem"
+echo
+echo "Adding renewal cron job..."
 
 # Every day at 2:30 AM
 CRON_JOB="30 2 * * * /usr/bin/certbot renew --renew-hook '${PWD}/scripts/certbot-renew-hook.sh' >> /var/log/cert-renewal.log"
@@ -40,10 +39,16 @@ CRON_JOB="30 2 * * * /usr/bin/certbot renew --renew-hook '${PWD}/scripts/certbot
 # Maintain the existing crontab,
 # Filter out our job if already present,
 # Add our job
-(
-    sudo crontab -l 2> /dev/null | grep --invert-match "certbot-renew-hook";
-    echo "${CRON_JOB}"
+( \
+    sudo crontab -l 2> /dev/null | grep --invert-match "certbot-renew-hook"; \
+    echo "${CRON_JOB}" \
 ) | sudo crontab -
 
+echo
 echo "Renewal cron job added"
 sudo crontab -l
+
+# Create the combined PEM file for HAProxy
+echo
+echo "Running renewal routine..."
+sudo bash ./scripts/certbot-renew-hook.sh

@@ -9,14 +9,20 @@ if [ "${EUID}" != "0" ]; then
     exit 1
 fi
 
+echo "Creating combined cert..."
+echo
+
 cd "/etc/letsencrypt/live/${CERT_NAME}"
 
 # Create a combined PEM file for HAProxy
 cat "fullchain.pem" "privkey.pem" > "combined.pem"
 chmod 600 "combined.pem"
 
+echo "Updating certs in HAProxy..."
+echo
+
 # https://www.haproxy.com/documentation/hapee/2-3r1/management/starting-stopping/#reload-the-configuration
-docker exec proxy bash -c 'kill -SIGUSR2 $(cat /run/haproxy.pid)'
+docker exec proxy bash -c 'kill -SIGUSR2 $(cat /run/haproxy.pid)' || echo "Could not update live certs"
 
 # Can also use the runtime API to update the cert but it's a bit more complicated/fragile for our setup
 # Have to add:
