@@ -2,7 +2,7 @@
 
 ## General:
 
-* ### Creating Public Pages:
+* ### [DEPRICATED] Creating Public Pages:
 
   Description: Creates a public profile page for the given user, which is accessible using the "Getting/Viewing Public Pages" API below. If a page already exists for the given user, this API will not overwrite it.
   
