@@ -2,18 +2,6 @@
 
 ## General:
 
-* ### [DEPRICATED] Creating Public Pages:
-
-  Description: Creates a public profile page for the given user, which is accessible using the "Getting/Viewing Public Pages" API below. If a page already exists for the given user, this API will not overwrite it.
-  
-  API Address: https://76gjqug5j8.execute-api.us-east-2.amazonaws.com/prod/create?username={username}
-  
-  Query Parameters: {username}: The username of the user for whom the public page is being created
-  
-  Required Headers: 'Content-Type': 'text/html'
-
-  Body: The raw html of the desired public facing page
-
 * ### Creating/Updating Public Pages:
  
   Description: Updates an existing public profile page, or creates one if no page exists yet for the given user. The page is accessible using the "Getting/Viewing Public Pages" API below.
