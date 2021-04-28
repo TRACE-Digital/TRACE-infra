@@ -1,6 +1,11 @@
 # Trace Public Pages API Documentation
+## Table of Contents:
+* [General Public Pages APIs]()
+* [Password Protection APIs]()
+* [Custom URL APIs]()
+* [Public Page Status API]()
 
-## General:
+## General Public Pages APIs:
 
 * ### Creating/Updating Public Pages:
  
@@ -40,7 +45,7 @@
   
   Body: None
 
-## Password Protection:
+## Password Protection APIs:
 
 * ### Adding/Changing a Password:
 
@@ -74,7 +79,7 @@
   
   Body: None
 
-## Custom URLs:
+## Custom URL APIs:
   
 * ### Creating/Editing a Custom URL:
 
@@ -116,7 +121,7 @@
   
   Body: None
 
-## Public Page Status
+## Public Page Status API
 
 * ### Status
   
