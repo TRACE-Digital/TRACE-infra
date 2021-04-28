@@ -1,9 +1,9 @@
 # Trace Public Pages API Documentation
 ## Table of Contents:
-* [General Public Pages APIs]()
-* [Password Protection APIs]()
-* [Custom URL APIs]()
-* [Public Page Status API]()
+* [General Public Pages APIs](https://github.com/TRACE-Digital/TRACE-infra/blob/main/APIs/public-pages.md#general-public-pages-apis)
+* [Password Protection APIs](https://github.com/TRACE-Digital/TRACE-infra/blob/main/APIs/public-pages.md#password-protection-apis)
+* [Custom URL APIs](https://github.com/TRACE-Digital/TRACE-infra/blob/main/APIs/public-pages.md#custom-url-apis)
+* [Public Page Status API](https://github.com/TRACE-Digital/TRACE-infra/blob/main/APIs/public-pages.md#public-page-status-api)
 
 ## General Public Pages APIs:
 
