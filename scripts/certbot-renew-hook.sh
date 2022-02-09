@@ -46,4 +46,15 @@ else
     echo "Proxy container was not active."
 fi
 
+echo "Updating certs in CouchDB..."
+
+cp -v /etc/letsencrypt/live/ec2/fullchain.pem /opt/couchdb/cert/fullchain.pem
+chown couchdb:couchdb /opt/couchdb/cert/fullchain.pem
+cp -v /etc/letsencrypt/live/ec2/privkey.pem /opt/couchdb/cert/privkey.pem
+chown couchdb:couchdb /opt/couchdb/cert/privkey.pem
+
+systemctl restart couchdb
+
+echo
+
 cd -

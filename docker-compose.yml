@@ -75,4 +75,3 @@ networks:
 volumes:
   matomo:
   mysql:
-  certs:
