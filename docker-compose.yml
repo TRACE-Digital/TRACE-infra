@@ -37,7 +37,7 @@ services:
       - 80:80/tcp
       - 443:443/tcp
     volumes:
-      - ./haproxy/certs:/certs:ro
+      - ./secrets/certs:/certs:ro
 
   # mysql:
   #   image: trace/mysql
