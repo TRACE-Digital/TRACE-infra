@@ -5,6 +5,10 @@ TRACE="tracedigital.tk"
 CERT_NAME="ec2"
 CERTBOT_PORT=8080
 
+echo
+echo "Setting up cerbot..."
+echo
+
 # Start the certbot standalone webserver on the normal *port 80* and request a cert
 # If this is a fresh install, we have a chicken before/after egg situation:
 #   We need a cert to start HAProxy
@@ -53,11 +57,11 @@ CRON_JOB="30 2 * * * /usr/bin/certbot renew --renew-hook '${PWD}/scripts/certbot
     echo "${CRON_JOB}" \
 ) | sudo crontab -
 
-echo
 echo "Renewal cron job added"
 sudo crontab -l
 
 # Create the combined PEM file for HAProxy
 echo
 echo "Running renewal routine..."
+echo
 sudo bash ./scripts/certbot-renew-hook.sh

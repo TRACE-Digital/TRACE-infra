@@ -19,9 +19,8 @@ cat "fullchain.pem" "privkey.pem" > "combined.pem"
 chmod 600 "combined.pem"
 
 echo "Updating certs in HAProxy..."
-echo
 
-if docker ps | grep "proxy"; then
+if docker ps | grep "proxy" > /dev/null; then
     # https://www.haproxy.com/documentation/hapee/2-3r1/management/starting-stopping/#reload-the-configuration
     docker exec proxy bash -c 'kill -SIGUSR2 $(cat /run/haproxy.pid)' || echo "Could not update live certs"
 
